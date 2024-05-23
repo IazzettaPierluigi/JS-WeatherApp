@@ -47,10 +47,14 @@ button[type="submit"]:hover {
     padding: 50px;
     box-shadow: 2px 2px 5px hsla(0, 0%, 0%, 0.5);
     display: flex;
-    min-width: 300px;
+    width: 500px;
     flex-direction: column;
     align-items: center;
     border-radius: 20px;
+}
+
+.cardContent {
+    background-color: hsl(0, 0%, 100%);
 }
 
 h1 {
@@ -90,4 +94,76 @@ p {
     font-size: 2.5rem;
     font-weight: bold;
     color: hsla(0, 0%, 0%, 0.75);
+}
+
+.clear_sky {
+    background-image: url('./clear_sky.gif');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.fog {
+
+    background-image: url('./fog.gif');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+
+}
+
+
+.thunderstorm {
+
+    background-image: url('./thunderstorm.gif');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+
+}
+
+
+.clouds {
+
+    background-image: url('./clouds.gif');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+
+}
+
+.drizzle {
+
+    background-image: url('./drizzle.gif');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+
+}
+
+.rain {
+
+    background-image: url('./rain.gif');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+
+}
+
+.snow {
+
+    background-image: url('./snow.gif');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+
+}
+
+.boh {
+
+    background-image: url('./boh.gif');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+
 }
