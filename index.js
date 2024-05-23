@@ -46,15 +46,18 @@ function displayWeatherInfo(data) {
     const { name: city, main: { temp, humidity }, weather: [{ description, id }] } = data;
 
     card.textContent = "";
-    card.style.display = "flex"
+    card.style.display = "flex";
 
     //ricreamo gli elementi
+    const cardContent = document.createElement("div");
     const cityDisplay = document.createElement("h1");
     const tempDisplay = document.createElement("p");
     const humidityDisplay = document.createElement("p");
     const descDisplay = document.createElement("p");
     const weatherEmoji = document.createElement("p");
 
+
+    cardContent.classList.add("cardContent");
 
     //riempiamo gli elementi creati
     cityDisplay.textContent = city;
@@ -78,11 +81,12 @@ function displayWeatherInfo(data) {
     weatherEmoji.classList.add("weatherEmoji")
 
     //aggiungiamo gli elementi alla card
-    card.appendChild(cityDisplay);
-    card.appendChild(tempDisplay);
-    card.appendChild(humidityDisplay);
-    card.appendChild(descDisplay);
-    card.appendChild(weatherEmoji);
+    card.appendChild(cardContent);
+    cardContent.appendChild(cityDisplay);
+    cardContent.appendChild(tempDisplay);
+    cardContent.appendChild(humidityDisplay);
+    cardContent.appendChild(descDisplay);
+    cardContent.appendChild(weatherEmoji);
 
 
     card.className = 'card';
