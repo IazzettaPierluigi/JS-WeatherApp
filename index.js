@@ -9,7 +9,7 @@ const card = document.querySelector(".card");
 //api key
 const apiKey = "d673d206bc45cf4a1ee77a0498a98166";
 
-weatherForm.addEventListener("submit", event => {
+weatherForm.addEventListener("submit", async event => {
 
     //prevent per evitare il refresh della pagina
     event.preventDefault();
@@ -18,7 +18,8 @@ weatherForm.addEventListener("submit", event => {
 
     if (city) {
         try {
-
+            const weatherData = await getWeatherData(city);
+            displayWeatherInfo(weatherData);
         } catch (error) {
             console.error(error);
             displayError(error)
@@ -30,7 +31,14 @@ weatherForm.addEventListener("submit", event => {
 });
 
 async function getWeatherData(city) {
+    const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`
 
+    const response = await fetch(apiUrl);
+
+    if (!response.ok) {
+        throw new Error("Could not fetch weather data")
+    }
+    return await response.json();
 }
 
 function displayWeatherInfo(data) {
