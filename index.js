@@ -31,7 +31,7 @@ weatherForm.addEventListener("submit", async event => {
 });
 
 async function getWeatherData(city) {
-    const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`
+    const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&lang={it}&appid=${apiKey}`
 
     const response = await fetch(apiUrl);
 
@@ -42,11 +42,54 @@ async function getWeatherData(city) {
 }
 
 function displayWeatherInfo(data) {
+    //destructuring per ottenere i dati che ci interessano al momento
+    const { name: city, main: { temp, humidity }, weather: [{ description, id }] } = data;
 
+    card.textContent = "";
+    card.style.display = "flex"
+
+    //ricreamo gli elementi
+    const cityDisplay = document.createElement("h1");
+    const tempDisplay = document.createElement("p");
+    const humidityDisplay = document.createElement("p");
+    const descDisplay = document.createElement("p");
+    const weatherEmoji = document.createElement("p");
+
+
+    //riempiamo gli elementi creati
+    cityDisplay.textContent = city;
+
+    tempDisplay.textContent = `${(temp - 273.15).toFixed(1)}°C`;
+
+    humidityDisplay.textContent = `Umidità: ${humidity}%`;
+
+    descDisplay.textContent = `${description}`;
+
+    weatherEmoji.textContent = getWeatherEmoji(id);
+
+
+
+
+    //aggiungiamo la classe CSS creata in precedenza
+    cityDisplay.classList.add("cityDisplay");
+    tempDisplay.classList.add("tempDisplay");
+    humidityDisplay.classList.add("humidityDisplay");
+    descDisplay.classList.add("descDisplay");
+    weatherEmoji.classList.add("weatherEmoji")
+
+    //aggiungiamo gli elementi alla card
+    card.appendChild(cityDisplay);
+    card.appendChild(tempDisplay);
+    card.appendChild(humidityDisplay);
+    card.appendChild(descDisplay);
+    card.appendChild(weatherEmoji);
 }
 
 function getWeatherEmoji(weatherId) {
-
+    switch (true) {
+        case (weatherId >= 200 && weatherId < 300):
+            return "⛈️";
+    }
 }
 
 function displayError(message) {
